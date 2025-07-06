@@ -3,111 +3,342 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>سياسة الخدمات - Space Services ®</title>
+<title>Space Services ®</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
   body {
-    background-color: #0c1431;
-    color: #e1eaff;
+    margin: 0;
     font-family: 'Cairo', sans-serif;
-    margin: 40px auto;
-    max-width: 900px;
-    padding: 0 15px;
+    background: #000814;
+    color: #a2c7ff;
     direction: rtl;
-    line-height: 1.7;
-  }
-  h1, h2, h3 {
-    color: #4db8ff;
-    margin-bottom: 20px;
-  }
-  h1 {
-    font-size: 2.8rem;
-    text-align: center;
-    margin-bottom: 40px;
-    text-shadow: 0 0 10px #4db8ff88;
-  }
-  h2 {
-    font-size: 2rem;
-    margin-top: 35px;
-  }
-  h3 {
-    font-size: 1.5rem;
-    margin-top: 25px;
-  }
-  p {
-    font-size: 1.15rem;
-    margin-bottom: 15px;
-  }
-  ul {
-    margin-bottom: 25px;
-    padding-inline-start: 20px;
-  }
-  ul li {
-    margin-bottom: 8px;
   }
   a {
-    color: #82b9ff;
+    color: #4db8ff;
     text-decoration: none;
   }
   a:hover {
     text-decoration: underline;
   }
-  /* خط فاصل */
-  hr {
+
+  /* Navbar */
+  nav {
+    background: #152d55;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: flex-end;
+    direction: rtl;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+  }
+  nav ul li {
+  }
+  .nav-link {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  .nav-link.active {
+    background-color: #007bff;
+    color: white;
+  }
+  .nav-link:hover {
+    color: white;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: white;
+    transition: width 0.4s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+
+  /* Sections container */
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 15px;
+  }
+
+  /* زر تسجيل دخول وتأثير تلوين كل حرفين */
+  .btn-special {
+    background-color: #007bff;
     border: none;
-    border-top: 1px solid #4db8ff66;
-    margin: 30px 0;
+    padding: 18px 48px;
+    font-size: 1.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #007bff88;
+    transition: box-shadow 0.3s ease;
+    display: inline-block;
+    user-select: none;
+  }
+  .btn-special:hover {
+    box-shadow: 0 0 25px #0056b3cc;
+  }
+  .btn-special span {
+    font-weight: bold;
+  }
+  .btn-special span:nth-child(4n+1),
+  .btn-special span:nth-child(4n+2) {
+    color: white;
+  }
+  .btn-special span:nth-child(4n+3),
+  .btn-special span:nth-child(4n+4) {
+    color: #a2c7ff;
+  }
+
+  /* خدماتنا */
+  #services img {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #4db8ffbb;
+    margin-bottom: 25px;
+  }
+  .services-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .services-buttons button {
+    min-width: 200px;
+  }
+
+  /* طرق الدفع */
+  #payments img {
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #4db8ffbb;
+    display: block;
+    margin: 0 auto 20px auto;
+  }
+  #payments p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+  }
+
+  /* سياسة الخدمات */
+  #policy {
+    text-align: center;
+  }
+  #policy img {
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #4db8ff99;
+    margin-bottom: 25px;
+  }
+  #policy p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    color: #a2c7ff;
+  }
+
+  /* التقديمات */
+  #applications {
+    text-align: center;
+    font-family: 'Cairo', sans-serif;
+  }
+  #applications h2 {
+    color: #4db8ff;
+    margin-bottom: 25px;
+  }
+  #applications .btn-disabled {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 2px solid #4db8ff;
+    background-color: #0c1431;
+    color: #a2c7ff;
+    cursor: not-allowed;
+    box-shadow: 0 0 10px #4db8ff66;
+    min-width: 180px;
+    margin: 0 10px 20px 10px;
+    user-select: none;
+  }
+  #applications .btn-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  #applications p.notice {
+    margin-top: 20px;
+    color: #7aaeff;
+    font-size: 1rem;
+  }
+
+  /* إخفاء وإظهار أقسام */
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+
+  /* استجابة الهواتف */
+  @media (max-width: 720px) {
+    .services-buttons {
+      flex-direction: column;
+    }
+    #applications .btn-container {
+      flex-direction: column;
+    }
   }
 </style>
 </head>
 <body>
-  <h1>سياسة الخدمات - Space Services ®</h1>
 
-  <h2>مقدمة</h2>
-  <p>
-    نحرص في Space Services ® على تقديم خدمات متميزة وعالية الجودة مع ضمان حقوق العملاء والسيرفر. تهدف هذه السياسة إلى توضيح الشروط والأحكام التي تحكم استخدام خدماتنا.
-  </p>
-
-  <hr />
-
-  <h2>شروط استخدام الخدمات</h2>
+<nav>
   <ul>
-    <li>يلتزم المستخدم باستخدام الخدمات بشكل قانوني وعدم استغلالها في أي نشاط مخالف.</li>
-    <li>يجب على المستخدم احترام قواعد السيرفر وعدم التسبب بأي ضرر للآخرين.</li>
-    <li>لا نتحمل أي مسؤولية عن استخدام خاطئ أو غير قانوني للخدمات.</li>
+    <li><a href="#" class="nav-link active" data-target="home">الرئيسية</a></li>
+    <li><a href="#" class="nav-link" data-target="services">خدماتنا</a></li>
+    <li><a href="#" class="nav-link" data-target="payments">طرق الدفع</a></li>
+    <li><a href="#" class="nav-link" data-target="policy">سياسة الخدمات</a></li>
+    <li><a href="#" class="nav-link" data-target="applications">التقديمات</a></li>
   </ul>
+</nav>
 
-  <hr />
+<div class="container">
 
-  <h2>سياسة الدفع والاسترجاع</h2>
-  <ul>
-    <li>جميع عمليات الدفع تتم عبر طرق الدفع المعلنة فقط.</li>
-    <li>في حال وجود أي مشكلة في الدفع أو الخدمة، يرجى التواصل معنا خلال 7 أيام.</li>
-    <li>لا يتم استرجاع المبالغ بعد تقديم الخدمة إلا في حالات خاصة يتم الاتفاق عليها مسبقاً.</li>
-  </ul>
+  <!-- الرئيسية -->
+  <section id="home" class="active" style="text-align:center; margin-top: 60px;">
+    <h1 style="color:#4db8ff; text-shadow: 0 0 10px #4db8ffaa;">Space Services ®</h1>
+    <p style="color:#a2c7ff; font-size: 1.3rem; max-width: 600px; margin: 15px auto 40px auto;">
+      أفضل سيرفر لبيع البوتات والتصاميم بأعلى جودة مع دعم فني مستمر
+    </p>
+  </section>
 
-  <hr />
+  <!-- خدماتنا -->
+  <section id="services" style="margin-top: 40px;">
+    <img src="https://i.postimg.cc/V63PS9hX/your-services-image.png" alt="خدماتنا" />
+    <div class="services-buttons">
+      <button class="btn-special" aria-label="بوتات ديسكورد احترافية">
+        <span>ب</span><span>و</span><span>ت</span><span>ا</span><span>ت</span> <span>د</span><span>ي</span><span>س</span><span>ك</span><span>و</span><span>ر</span> <span>ا</span><span>ح</span><span>ت</span><span>ر</span><span>ا</span><span>ف</span><span>ي</span><span>ة</span>
+      </button>
+      <button class="btn-special" aria-label="تصاميم جرافيك مميزة">
+        <span>ت</span><span>ص</span><span>ا</span><span>م</span><span>ي</span><span>م</span> <span>ج</span><span>ر</span><span>ا</span><span>ف</span><span>ي</span><span>ك</span> <span>م</span><span>م</span><span>ي</span><span>ز</span><span>ة</span>
+      </button>
+      <button class="btn-special" aria-label="دعم فني متواصل">
+        <span>د</span><span>ع</span><span>م</span> <span>ف</span><span>ن</span><span>ي</span> <span>م</span><span>ت</span><span>و</span><span>ا</span><span>ص</span><span>ل</span>
+      </button>
+      <button class="btn-special" aria-label="خدمات مخصصة">
+        <span>خ</span><span>د</span><span>م</span><span>ا</span><span>ت</span> <span>م</span><span>خ</span><span>ص</span><span>ص</span><span>ة</span>
+      </button>
+    </div>
+  </section>
 
-  <h2>الخصوصية والأمان</h2>
-  <p>
-    نلتزم بالحفاظ على سرية بيانات العملاء وعدم مشاركتها مع أي جهة خارجية دون إذن مسبق.
-  </p>
-  <p>
-    يتم استخدام أحدث وسائل الحماية لتأمين بيانات المستخدمين.
-  </p>
+  <!-- طرق الدفع -->
+  <section id="payments" style="margin-top: 40px; text-align: center;">
+    <h2 style="color:#4db8ff; margin-bottom: 20px;">طرق الدفع</h2>
+    <img src="https://i.postimg.cc/vZFMFMDm/20250605-151439-0000.png" alt="طرق الدفع" />
+    <p>
+      نقدم لك عدة طرق دفع آمنة وسهلة لتلبية جميع احتياجاتك، اختر الطريقة التي تناسبك وتمتع بخدمة مميزة.
+    </p>
+  </section>
 
-  <hr />
+  <!-- سياسة الخدمات -->
+  <section id="policy" style="margin-top: 40px; text-align: center;">
+    <h2 style="color:#4db8ff; margin-bottom: 20px;">سياسة الخدمات</h2>
+    <img src="https://i.postimg.cc/3NtyfN3W/20250608-203624-0000.png" alt="سياسة الخدمات" />
+    <p>
+      نحرص على تقديم أفضل جودة في خدماتنا مع التزام تام بسياسة واضحة تحفظ حقوق العميل والسيرفر.
+    </p>
+  </section>
 
-  <h2>التغييرات على السياسة</h2>
-  <p>
-    تحتفظ Space Services ® بحق تعديل هذه السياسة في أي وقت، وسيتم الإعلان عن أي تغييرات عبر القنوات الرسمية.
-  </p>
+  <!-- التقديمات -->
+  <section id="applications" style="margin-top: 40px;">
+    <h2 style="color:#4db8ff; margin-bottom: 25px; text-align:center;">التقديمات</h2>
+    <div class="btn-container" style="display:flex; justify-content:center; flex-wrap:wrap; gap:25px;">
+      <button class="btn-disabled" disabled style="
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        border: 2px solid #4db8ff;
+        background-color: #0c1431;
+        color: #a2c7ff;
+        cursor: not-allowed;
+        box-shadow: 0 0 10px #4db8ff66;
+        min-width: 180px;
+        user-select: none;
+      ">التقديم للطاقم الإداري</button>
+      <button class="btn-disabled" disabled style="
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        border: 2px solid #4db8ff;
+        background-color: #0c1431;
+        color: #a2c7ff;
+        cursor: not-allowed;
+        box-shadow: 0 0 10px #4db8ff66;
+        min-width: 180px;
+        user-select: none;
+      ">التقديم للفريق البرمجي</button>
+      <button class="btn-disabled" disabled style="
+        padding: 15px 30px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        border: 2px solid #4db8ff;
+        background-color: #0c1431;
+        color: #a2c7ff;
+        cursor: not-allowed;
+        box-shadow: 0 0 10px #4db8ff66;
+        min-width: 180px;
+        user-select: none;
+      ">التقديم للفريق التصميمي</button>
+    </div>
+    <p style="margin-top: 20px; color: #7aaeff; font-size: 1rem; text-align:center;">
+      حالياً التقديمات مغلقة، يرجى متابعة الإعلانات لمعرفة موعد فتحها.
+    </p>
+  </section>
 
-  <hr />
+</div>
 
-  <h2>التواصل معنا</h2>
-  <p>
-    لأي استفسار أو شكوى، يمكنكم التواصل معنا عبر <a href="mailto:support@spaceservices.com">البريد الإلكتروني</a> أو من خلال قنوات الدعم في السيرفر.
-  </p>
+<script>
+  // تحكم في التنقل بين الأقسام
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+
+      // إزالة تفعيل من الكل
+      navLinks.forEach(l => l.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+
+      // تفعيل المختار
+      link.classList.add('active');
+      const target = link.getAttribute('data-target');
+      document.getElementById(target).classList.add('active');
+
+      // تمرير للجزء المختار (اختياري)
+      document.getElementById(target).scrollIntoView({behavior: 'smooth'});
+    });
+  });
+</script>
+
 </body>
 </html>
