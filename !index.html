@@ -1,344 +1,220 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Space Services ®</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
-  body {
-    margin: 0;
-    font-family: 'Cairo', sans-serif;
-    background: #000814;
-    color: #a2c7ff;
-    direction: rtl;
-  }
-  a {
-    color: #4db8ff;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Space Services ®</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-  /* Navbar */
-  nav {
-    background: #152d55;
-    padding: 12px 30px;
-    display: flex;
-    justify-content: flex-end;
-    direction: rtl;
-  }
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 30px;
-  }
-  nav ul li {
-  }
-  .nav-link {
-    position: relative;
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: color 0.3s ease;
-    cursor: pointer;
-    background-color: transparent;
-  }
-  .nav-link.active {
-    background-color: #007bff;
-    color: white;
-  }
-  .nav-link:hover {
-    color: white;
-  }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: 2px;
-    width: 0;
-    background: white;
-    transition: width 0.4s ease;
-  }
-  .nav-link:hover::after {
-    width: 100%;
-    left: 0;
-    right: auto;
-  }
-
-  /* Sections container */
-  .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 15px;
-  }
-
-  /* زر تسجيل دخول وتأثير تلوين كل حرفين */
-  .btn-special {
-    background-color: #007bff;
-    border: none;
-    padding: 18px 48px;
-    font-size: 1.8rem;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 0 15px #007bff88;
-    transition: box-shadow 0.3s ease;
-    display: inline-block;
-    user-select: none;
-  }
-  .btn-special:hover {
-    box-shadow: 0 0 25px #0056b3cc;
-  }
-  .btn-special span {
-    font-weight: bold;
-  }
-  .btn-special span:nth-child(4n+1),
-  .btn-special span:nth-child(4n+2) {
-    color: white;
-  }
-  .btn-special span:nth-child(4n+3),
-  .btn-special span:nth-child(4n+4) {
-    color: #a2c7ff;
-  }
-
-  /* خدماتنا */
-  #services img {
-    max-width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 0 20px #4db8ffbb;
-    margin-bottom: 25px;
-  }
-  .services-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .services-buttons button {
-    min-width: 200px;
-  }
-
-  /* طرق الدفع */
-  #payments img {
-    max-width: 90%;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #4db8ffbb;
-    display: block;
-    margin: 0 auto 20px auto;
-  }
-  #payments p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 40px auto;
-    text-align: center;
-  }
-
-  /* سياسة الخدمات */
-  #policy {
-    text-align: center;
-  }
-  #policy img {
-    max-width: 90%;
-    border-radius: 15px;
-    box-shadow: 0 0 15px #4db8ff99;
-    margin-bottom: 25px;
-  }
-  #policy p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 40px auto;
-    color: #a2c7ff;
-  }
-
-  /* التقديمات */
-  #applications {
-    text-align: center;
-    font-family: 'Cairo', sans-serif;
-  }
-  #applications h2 {
-    color: #4db8ff;
-    margin-bottom: 25px;
-  }
-  #applications .btn-disabled {
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    border-radius: 10px;
-    border: 2px solid #4db8ff;
-    background-color: #0c1431;
-    color: #a2c7ff;
-    cursor: not-allowed;
-    box-shadow: 0 0 10px #4db8ff66;
-    min-width: 180px;
-    margin: 0 10px 20px 10px;
-    user-select: none;
-  }
-  #applications .btn-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-  }
-  #applications p.notice {
-    margin-top: 20px;
-    color: #7aaeff;
-    font-size: 1rem;
-  }
-
-  /* إخفاء وإظهار أقسام */
-  section {
-    display: none;
-  }
-  section.active {
-    display: block;
-  }
-
-  /* استجابة الهواتف */
-  @media (max-width: 720px) {
-    .services-buttons {
-      flex-direction: column;
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #0c1431;
+      color: white;
+      display: flex;
+      min-height: 100vh;
     }
-    #applications .btn-container {
+
+    /* القائمة الجانبية */
+    .sidebar {
+      width: 220px;
+      background-color: #152d55;
+      padding: 30px 20px;
+      display: flex;
       flex-direction: column;
+      gap: 20px;
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.3);
     }
-  }
-</style>
+
+    .sidebar a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .sidebar a:hover::after {
+      content: "";
+      position: absolute;
+      bottom: 6px;
+      right: 0;
+      height: 2px;
+      width: 100%;
+      background: white;
+      animation: underline-slide 0.4s ease forwards;
+    }
+
+    .sidebar a.active {
+      background-color: #4db8ff;
+      color: #0c1431;
+    }
+
+    @keyframes underline-slide {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* محتوى الموقع */
+    .content {
+      flex-grow: 1;
+      padding: 40px 30px;
+      margin-right: 240px;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h1 {
+      color: #4db8ff;
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      color: #4db8ff;
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #4db8ff88;
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #4db8ff;
+      color: #0c1431;
+      padding: 15px 30px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #67caff;
+    }
+
+    .btn-disabled {
+      background-color: #cccccc33;
+      border: 2px solid #4db8ff;
+      color: #a2c7ff;
+      cursor: not-allowed;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        position: static;
+      }
+
+      .content {
+        margin-right: 0;
+        margin-top: 20px;
+      }
+
+      .sidebar a {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <ul>
-    <li><a href="#" class="nav-link active" data-target="home">الرئيسية</a></li>
-    <li><a href="#" class="nav-link" data-target="services">خدماتنا</a></li>
-    <li><a href="#" class="nav-link" data-target="payments">طرق الدفع</a></li>
-    <li><a href="#" class="nav-link" data-target="policy">سياسة الخدمات</a></li>
-    <li><a href="#" class="nav-link" data-target="applications">التقديمات</a></li>
-  </ul>
-</nav>
+  <!-- القائمة الجانبية -->
+  <div class="sidebar">
+    <a href="#" class="nav-link active" data-target="home">الرئيسية</a>
+    <a href="#" class="nav-link" data-target="services">خدماتنا</a>
+    <a href="#" class="nav-link" data-target="payments">طرق الدفع</a>
+    <a href="#" class="nav-link" data-target="policy">سياسة الخدمات</a>
+    <a href="#" class="nav-link" data-target="applications">التقديمات</a>
+  </div>
 
-<div class="container">
+  <!-- المحتوى -->
+  <div class="content">
+    <!-- الرئيسية -->
+    <section id="home" class="active">
+      <h1>Space Services ®</h1>
+      <p>أفضل سيرفر لبيع البوتات والتصاميم بأسلوب احترافي ودعم متكامل.</p>
+      <img src="https://i.postimg.cc/J4QKm5zB/Space-20250605-144803-0000.png" alt="صورة الغلاف" />
+    </section>
 
-  <!-- الرئيسية -->
-  <section id="home" class="active" style="text-align:center; margin-top: 60px;">
-    <h1 style="color:#4db8ff; text-shadow: 0 0 10px #4db8ffaa;">Space Services ®</h1>
-    <p style="color:#a2c7ff; font-size: 1.3rem; max-width: 600px; margin: 15px auto 40px auto;">
-      أفضل سيرفر لبيع البوتات والتصاميم بأعلى جودة مع دعم فني مستمر
-    </p>
-  </section>
+    <!-- خدماتنا -->
+    <section id="services">
+      <h2>خدماتنا</h2>
+      <img src="https://i.postimg.cc/V63PS9hX/your-services-image.png" alt="خدماتنا">
+      <button class="btn">بوتات احترافية</button>
+      <button class="btn">تصاميم جرافيك</button>
+      <button class="btn">برمجة حسب الطلب</button>
+      <button class="btn">دعم فني مباشر</button>
+    </section>
 
-  <!-- خدماتنا -->
-  <section id="services" style="margin-top: 40px;">
-    <img src="https://i.postimg.cc/V63PS9hX/your-services-image.png" alt="خدماتنا" />
-    <div class="services-buttons">
-      <button class="btn-special" aria-label="بوتات ديسكورد احترافية">
-        <span>ب</span><span>و</span><span>ت</span><span>ا</span><span>ت</span> <span>د</span><span>ي</span><span>س</span><span>ك</span><span>و</span><span>ر</span> <span>ا</span><span>ح</span><span>ت</span><span>ر</span><span>ا</span><span>ف</span><span>ي</span><span>ة</span>
-      </button>
-      <button class="btn-special" aria-label="تصاميم جرافيك مميزة">
-        <span>ت</span><span>ص</span><span>ا</span><span>م</span><span>ي</span><span>م</span> <span>ج</span><span>ر</span><span>ا</span><span>ف</span><span>ي</span><span>ك</span> <span>م</span><span>م</span><span>ي</span><span>ز</span><span>ة</span>
-      </button>
-      <button class="btn-special" aria-label="دعم فني متواصل">
-        <span>د</span><span>ع</span><span>م</span> <span>ف</span><span>ن</span><span>ي</span> <span>م</span><span>ت</span><span>و</span><span>ا</span><span>ص</span><span>ل</span>
-      </button>
-      <button class="btn-special" aria-label="خدمات مخصصة">
-        <span>خ</span><span>د</span><span>م</span><span>ا</span><span>ت</span> <span>م</span><span>خ</span><span>ص</span><span>ص</span><span>ة</span>
-      </button>
-    </div>
-  </section>
+    <!-- طرق الدفع -->
+    <section id="payments">
+      <h2>طرق الدفع</h2>
+      <p>نوفر لك وسائل دفع آمنة وسهلة لتسديد مستحقاتك بكل راحة.</p>
+      <img src="https://i.postimg.cc/vZFMFMDm/20250605-151439-0000.png" alt="طرق الدفع" />
+    </section>
 
-  <!-- طرق الدفع -->
-  <section id="payments" style="margin-top: 40px; text-align: center;">
-    <h2 style="color:#4db8ff; margin-bottom: 20px;">طرق الدفع</h2>
-    <img src="https://i.postimg.cc/vZFMFMDm/20250605-151439-0000.png" alt="طرق الدفع" />
-    <p>
-      نقدم لك عدة طرق دفع آمنة وسهلة لتلبية جميع احتياجاتك، اختر الطريقة التي تناسبك وتمتع بخدمة مميزة.
-    </p>
-  </section>
+    <!-- سياسة الخدمات -->
+    <section id="policy">
+      <h2>سياسة الخدمات</h2>
+      <p>نلتزم بتقديم أعلى جودة ضمن قوانين تحمي الطرفين. يرجى قراءة السياسة قبل الطلب.</p>
+      <img src="https://i.postimg.cc/3NtyfN3W/20250608-203624-0000.png" alt="سياسة الخدمات" />
+    </section>
 
-  <!-- سياسة الخدمات -->
-  <section id="policy" style="margin-top: 40px; text-align: center;">
-    <h2 style="color:#4db8ff; margin-bottom: 20px;">سياسة الخدمات</h2>
-    <img src="https://i.postimg.cc/3NtyfN3W/20250608-203624-0000.png" alt="سياسة الخدمات" />
-    <p>
-      نحرص على تقديم أفضل جودة في خدماتنا مع التزام تام بسياسة واضحة تحفظ حقوق العميل والسيرفر.
-    </p>
-  </section>
+    <!-- التقديمات -->
+    <section id="applications">
+      <h2>التقديمات</h2>
+      <p>حالياً التقديمات مغلقة، سيتم الإعلان عن فتحها في وقت لاحق.</p>
+      <button class="btn btn-disabled">التقديم للطاقم الإداري</button>
+      <button class="btn btn-disabled">التقديم للفريق البرمجي</button>
+      <button class="btn btn-disabled">التقديم للفريق التصميمي</button>
+    </section>
+  </div>
 
-  <!-- التقديمات -->
-  <section id="applications" style="margin-top: 40px;">
-    <h2 style="color:#4db8ff; margin-bottom: 25px; text-align:center;">التقديمات</h2>
-    <div class="btn-container" style="display:flex; justify-content:center; flex-wrap:wrap; gap:25px;">
-      <button class="btn-disabled" disabled style="
-        padding: 15px 30px;
-        font-size: 1.1rem;
-        border-radius: 10px;
-        border: 2px solid #4db8ff;
-        background-color: #0c1431;
-        color: #a2c7ff;
-        cursor: not-allowed;
-        box-shadow: 0 0 10px #4db8ff66;
-        min-width: 180px;
-        user-select: none;
-      ">التقديم للطاقم الإداري</button>
-      <button class="btn-disabled" disabled style="
-        padding: 15px 30px;
-        font-size: 1.1rem;
-        border-radius: 10px;
-        border: 2px solid #4db8ff;
-        background-color: #0c1431;
-        color: #a2c7ff;
-        cursor: not-allowed;
-        box-shadow: 0 0 10px #4db8ff66;
-        min-width: 180px;
-        user-select: none;
-      ">التقديم للفريق البرمجي</button>
-      <button class="btn-disabled" disabled style="
-        padding: 15px 30px;
-        font-size: 1.1rem;
-        border-radius: 10px;
-        border: 2px solid #4db8ff;
-        background-color: #0c1431;
-        color: #a2c7ff;
-        cursor: not-allowed;
-        box-shadow: 0 0 10px #4db8ff66;
-        min-width: 180px;
-        user-select: none;
-      ">التقديم للفريق التصميمي</button>
-    </div>
-    <p style="margin-top: 20px; color: #7aaeff; font-size: 1rem; text-align:center;">
-      حالياً التقديمات مغلقة، يرجى متابعة الإعلانات لمعرفة موعد فتحها.
-    </p>
-  </section>
+  <!-- سكربت التحكم في التنقل -->
+  <script>
+    const links = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
 
-</div>
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        links.forEach(l => l.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
 
-<script>
-  // تحكم في التنقل بين الأقسام
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section');
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-
-      // إزالة تفعيل من الكل
-      navLinks.forEach(l => l.classList.remove('active'));
-      sections.forEach(s => s.classList.remove('active'));
-
-      // تفعيل المختار
-      link.classList.add('active');
-      const target = link.getAttribute('data-target');
-      document.getElementById(target).classList.add('active');
-
-      // تمرير للجزء المختار (اختياري)
-      document.getElementById(target).scrollIntoView({behavior: 'smooth'});
+        link.classList.add('active');
+        const target = link.getAttribute('data-target');
+        document.getElementById(target).classList.add('active');
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
