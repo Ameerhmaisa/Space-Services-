@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Space Services ®</title>
 <style>
-  /* الخطوط الأساسية */
   @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
   body {
     margin: 0;
@@ -21,12 +20,39 @@
   a:hover {
     text-decoration: underline;
   }
+  /* زر تسجيل الدخول - تأثير كل حرفين */
+  .login-btn {
+    background-color: #007bff;
+    border: none;
+    padding: 18px 48px;
+    font-size: 1.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #007bff88;
+    transition: box-shadow 0.3s ease;
+    display: inline-block;
+    margin: 10px auto;
+  }
+  .login-btn:hover {
+    box-shadow: 0 0 25px #0056b3cc;
+  }
+  .login-btn span {
+    font-weight: bold;
+  }
+  .login-btn span:nth-child(4n+1),
+  .login-btn span:nth-child(4n+2) {
+    color: white;
+  }
+  .login-btn span:nth-child(4n+3),
+  .login-btn span:nth-child(4n+4) {
+    color: #a2c7ff;
+  }
 
-  /* الهيدر مع الخلفية */
+  /* الهيدر مع الخلفية وصندوق زر تسجيل الدخول */
   header {
     position: relative;
     height: 400px;
-    background: url('https://i.postimg.cc/tR9PQg7J/phone-space-bg.jpg') center/cover no-repeat;
+    background: url('https://i.postimg.cc/J4QKm5zB/Space-20250605-144803-0000.png') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,15 +63,17 @@
   }
   header h1 {
     font-size: 3.5rem;
-    margin: 0;
+    margin: 0 0 15px 0;
     text-shadow: 0 0 10px #4db8ff;
   }
-  header p {
+  header p.subtitle {
     font-size: 1.3rem;
-    margin-top: 15px;
     max-width: 600px;
     line-height: 1.5;
     text-shadow: 0 0 6px #80bfff;
+  }
+  header .login-wrapper {
+    margin-top: 25px;
   }
 
   /* التبويبات */
@@ -113,46 +141,118 @@
     color: #80bfff;
   }
 
-  /* طرق الدفع - أيقونات وأسماء */
-  .payment-methods {
+  /* طرق الدفع - صورة مع نص */
+  #payments-section {
+    text-align: center;
+  }
+  #payments-section img {
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #4db8ffbb;
+  }
+  #payments-section p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* سياسة الخدمات - صورة مع نص */
+  #service-policy {
+    text-align: center;
+    margin: 40px 0;
+  }
+  #service-policy img {
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #4db8ff99;
+  }
+  #service-policy p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #a2c7ff;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* التقديمات - أزرار مقفلة */
+  #applications {
+    text-align: center;
+    margin: 40px 0;
+    font-family: 'Cairo', sans-serif;
+  }
+  #applications h2 {
+    color: #4db8ff;
+    margin-bottom: 25px;
+  }
+  #applications .btn-disabled {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 2px solid #4db8ff;
+    background-color: #0c1431;
+    color: #a2c7ff;
+    cursor: not-allowed;
+    box-shadow: 0 0 10px #4db8ff66;
+    min-width: 180px;
+    margin: 0 10px 20px 10px;
+    user-select: none;
+  }
+  #applications .btn-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
   }
-  .payment-item {
-    background: #152d55;
-    border-radius: 10px;
-    padding: 15px 25px;
-    box-shadow: 0 0 12px #4db8ffaa;
-    text-align: center;
-    width: 140px;
-    cursor: default;
-    transition: box-shadow 0.3s ease;
-  }
-  .payment-item:hover {
-    box-shadow: 0 0 25px #4db8ffee;
-  }
-  .payment-item img {
-    max-width: 60px;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 2px #80bfff);
-  }
-  .payment-item span {
-    display: block;
-    font-weight: bold;
-    color: #a2c7ff;
+  #applications p.notice {
+    margin-top: 20px;
+    color: #7aaeff;
+    font-size: 1rem;
   }
 
-  /* الفوتر */
-  footer {
-    text-align: center;
-    padding: 25px 10px;
+  /* صفحة تسجيل الدخول */
+  #login-page {
+    display: none;
+    max-width: 400px;
+    margin: 50px auto;
     background: #0c1431;
+    padding: 30px 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #2266ffaa;
+    text-align: center;
+  }
+  #login-page h2 {
+    margin-bottom: 25px;
     color: #4db8ff;
-    font-size: 0.9rem;
-    margin-top: 60px;
-    user-select: none;
+  }
+  #login-page .login-methods button {
+    background: #152d55;
+    border: none;
+    padding: 15px 20px;
+    margin: 10px auto;
+    width: 80%;
+    color: #a2c7ff;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 12px #4db8ff88;
+    transition: background-color 0.3s ease;
+  }
+  #login-page .login-methods button:hover {
+    background: #0a1a4d;
+  }
+  #login-page .login-methods button:not(:last-child) {
+    margin-bottom: 15px;
+  }
+
+  /* إظهار وإخفاء الصفحات */
+  .hidden {
+    display: none !important;
+  }
+  .visible {
+    display: block !important;
   }
 
   /* استجابة الهواتف */
@@ -161,8 +261,8 @@
       flex-direction: column;
       gap: 15px;
     }
-    .payment-methods {
-      justify-content: space-around;
+    #applications .btn-container {
+      flex-direction: column;
     }
   }
 </style>
@@ -171,14 +271,20 @@
 
 <header>
   <h1>Space Services ®</h1>
-  <p>أفضل سيرفر لبيع البوتات والتصاميم بأعلى جودة مع دعم فني مستمر</p>
+  <p class="subtitle">أفضل سيرفر لبيع البوتات والتصاميم بأعلى جودة مع دعم فني مستمر</p>
+  <div class="login-wrapper">
+    <button id="show-login" class="login-btn" aria-label="تسجيل الدخول">
+      <span>ت</span><span>س</span><span>ج</span><span>ي</span><span>ل</span><span> </span><span>ا</span><span>ل</span><span>د</span><span>خ</span><span>و</span><span>ل</span>
+    </button>
+  </div>
 </header>
 
 <div class="tabs">
   <div class="tab-buttons">
     <button class="active" data-tab="services">خدماتنا</button>
     <button data-tab="payments">طرق الدفع</button>
-    <button data-tab="about">الرئيسية</button>
+    <button data-tab="policy">سياسة الخدمات</button>
+    <button data-tab="applications">التقديمات</button>
   </div>
 
   <div class="tab-content" id="services" style="display: block;">
@@ -203,36 +309,55 @@
   </div>
 
   <div class="tab-content" id="payments" style="display: none;">
-    <div class="payment-methods">
-      <div class="payment-item">
-        <img src="https://i.postimg.cc/SK9f8LPX/visa.png" alt="Visa" />
-        <span>فيزا</span>
-      </div>
-      <div class="payment-item">
-        <img src="https://i.postimg.cc/FHtx4v2c/paypal.png" alt="PayPal" />
-        <span>بايبال</span>
-      </div>
-      <div class="payment-item">
-        <img src="https://i.postimg.cc/65jcYZ7b/mastercard.png" alt="MasterCard" />
-        <span>ماستركارد</span>
-      </div>
-      <div class="payment-item">
-        <img src="https://i.postimg.cc/mDwyhqtp/applepay.png" alt="Apple Pay" />
-        <span>Apple Pay</span>
-      </div>
+    <div id="payments-section">
+      <img src="https://i.postimg.cc/vZFMFMDm/20250605-151439-0000.png" alt="طرق الدفع" />
+      <p>
+        نقدم لك عدة طرق دفع آمنة وسهلة لتلبية جميع احتياجاتك، اختر الطريقة التي تناسبك وتمتع بخدمة مميزة.
+      </p>
     </div>
   </div>
 
-  <div class="tab-content" id="about" style="display: none;">
-    <h2>مرحباً بك في Space Services ®</h2>
-    <p>
-      نحن نخدم مجتمع ديسكورد بمحترفين يقدمون أفضل البوتات والتصاميم لجعل سيرفرك مميزاً وفريداً.  
-      هدفنا تقديم خدمات بجودة عالية مع دعم فني متواصل على مدار الساعة.
-    </p>
-    <p>
-      انضم إلينا اليوم وابدأ تجربة فريدة مع فريقنا المتخصص!
-    </p>
+  <div class="tab-content" id="policy" style="display: none;">
+    <section id="service-policy">
+      <img src="https://i.postimg.cc/3NtyfN3W/20250608-203624-0000.png" alt="سياسة الخدمات" />
+      <p>
+        نحرص على تقديم أفضل جودة في خدماتنا مع التزام تام بسياسة واضحة تحفظ حقوق العميل والسيرفر.
+      </p>
+    </section>
   </div>
+
+  <div class="tab-content" id="applications" style="display: none;">
+    <section id="applications">
+      <h2>التقديمات</h2>
+      <div class="btn-container">
+        <button class="btn-disabled" disabled>التقديم للطاقم الإداري</button>
+        <button class="btn-disabled" disabled>التقديم للفريق البرمجي</button>
+        <button class="btn-disabled" disabled>التقديم للفريق التصميمي</button>
+      </div>
+      <p class="notice">حالياً التقديمات مغلقة، يرجى متابعة الإعلانات لمعرفة موعد فتحها.</p>
+    </section>
+  </div>
+</div>
+
+<!-- صفحة تسجيل الدخول (مخفية افتراضياً) -->
+<div id="login-page" class="hidden">
+  <h2>تسجيل الدخول</h2>
+  <div class="login-methods">
+    <button>تسجيل الدخول عبر جوجل</button>
+    <button>تسجيل الدخول عبر فيسبوك</button>
+    <button>تسجيل الدخول عبر تويتر</button>
+  </div>
+  <button id="close-login" style="
+    margin-top: 25px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    background: #4db8ff;
+    color: #000814;
+    cursor: pointer;
+    box-shadow: 0 0 15px #4db8ff88;
+  ">إغلاق</button>
 </div>
 
 <footer>
@@ -240,23 +365,41 @@
 </footer>
 
 <script>
-  // التعامل مع التبويبات
+  // التبويبات
   const buttons = document.querySelectorAll('.tab-buttons button');
   const contents = document.querySelectorAll('.tab-content');
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // إزالة الكلاس active من جميع الأزرار
       buttons.forEach(b => b.classList.remove('active'));
-      // إخفاء كل المحتويات
       contents.forEach(c => c.style.display = 'none');
-
-      // تفعيل الزر والمحتوى المختار
       btn.classList.add('active');
       document.getElementById(btn.dataset.tab).style.display = 'block';
+      // إذا فتحنا صفحة تسجيل الدخول نخفيها
+      if(btn.dataset.tab !== 'login') {
+        document.getElementById('login-page').classList.add('hidden');
+      }
     });
+  });
+
+  // فتح صفحة تسجيل الدخول
+  document.getElementById('show-login').addEventListener('click', () => {
+    document.getElementById('login-page').classList.remove('hidden');
+    // نخفي التبويبات والمحتوى لما تظهر صفحة الدخول
+    contents.forEach(c => c.style.display = 'none');
+    buttons.forEach(b => b.classList.remove('active'));
+  });
+
+  // إغلاق صفحة تسجيل الدخول
+  document.getElementById('close-login').addEventListener('click', () => {
+    document.getElementById('login-page').classList.add('hidden');
+    // نرجع لإظهار تبويب الخدمات الافتراضي
+    buttons[0].classList.add('active');
+    contents.forEach(c => c.style.display = 'none');
+    contents[0].style.display = 'block';
   });
 </script>
 
 </body>
 </html>
+
